@@ -1,0 +1,14 @@
+---
+title: 'Bayesian Optimization' 
+date: 2023-07-07T23:31:50+03:30
+draft: false
+tags: ["optimization", "probability", "gaussian process"]
+description: "Coding bayesian optimization from scratch"
+canonicalURL: "https://advafaeian.github.io/20230-07-07-bayesian-optimization/"
+cover:
+    image: "cover.img" # image path/url
+    alt: "Grand Canyon National Park" # alt text
+    caption: "Grand Canyon National Park. Photo by Sam Loyd on Unsplash. Which path takes you to the lowest point?"
+    relative: true
+github: "https://github.com/advafaeian/bayesianoptimization"    
+---
