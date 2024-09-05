@@ -1,0 +1,28 @@
+{{- $scratch := newScratch }}
+
+{{- if not .Date.IsZero -}}
+{{- $formattedDate := printf "Date:&nbsp;<span title='%s'>%s</span>" (.Date) (.Date | time.Format (default "January 2, 2006" site.Params.DateFormat)) }}
+{{- $scratch.Add "meta" (slice $formattedDate) }}
+{{- end }}
+
+{{- if (.Param "ShowReadingTime") -}}
+{{- $readTime := printf "%d min" .ReadingTime }}
+{{- $translation := i18n "read_time" .ReadingTime | default $readTime }}
+{{- $finalOutput := printf "%s read" $translation }}
+{{- $scratch.Add "meta" (slice $finalOutput) }}
+{{- end }}
+
+{{- if (.Param "ShowWordCount") -}}
+{{- $scratch.Add "meta" (slice (i18n "words" .WordCount | default (printf "%d words" .WordCount))) }}
+{{- end }}
+
+{{- if not (.Param "hideAuthor") -}}
+{{- with (partial "author.html" .) }}
+{{- $authorName := printf "Author: %s" . }}
+{{- $scratch.Add "meta" (slice $authorName) }}
+{{- end }}
+{{- end }}
+
+{{- with ($scratch.Get "meta") }}
+{{- delimit . "&nbsp;|&nbsp;" | safeHTML -}}
+{{- end -}}
