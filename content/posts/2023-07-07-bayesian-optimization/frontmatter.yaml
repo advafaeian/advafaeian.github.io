@@ -1,3 +1,4 @@
+---
 title: 'Bayesian Optimization' 
 date: 2023-07-07T23:31:50+03:30
 draft: false
@@ -10,3 +11,4 @@ cover:
     caption: "Grand Canyon National Park. Photo by Sam Loyd on Unsplash. Which path takes you to the lowest point?"
     relative: true
 github: "https://github.com/advafaeian/bayesianoptimization"    
+---
