@@ -1,3 +1,4 @@
+---
 title: 'Bayesian Optimization' 
 date: 2023-07-07T23:31:50+03:30
 draft: false
@@ -10,6 +11,7 @@ cover:
     caption: "Grand Canyon National Park. Photo by Sam Loyd on Unsplash. Which path takes you to the lowest point?"
     relative: true
 github: "https://github.com/advafaeian/bayesianoptimization"    
+---
 This tutorial provides a step-by-step guide to implementing Bayesian optimization from scratch. The Overall story is that we want to find the global minimum/maximum of an unknown function. The procedure consists of first fitting a Gaussian process to the existing samples from the objective function and through that fitted model, finding the most suitable next point to be sampled.
 
 ## Source
