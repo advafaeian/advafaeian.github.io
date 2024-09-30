@@ -1,4 +1,3 @@
----
 title: 'Bayesian Optimization' 
 date: 2023-07-07T23:31:50+03:30
 draft: false
@@ -11,7 +10,6 @@ cover:
     caption: "Grand Canyon National Park. Photo by Sam Loyd on Unsplash. Which path takes you to the lowest point?"
     relative: true
 github: "https://github.com/advafaeian/bayesianoptimization"    
----
 This tutorial provides a step-by-step guide to implementing Bayesian optimization from scratch. The Overall story is that we want to find the global minimum/maximum of an unknown function. The procedure consists of first fitting a Gaussian process to the existing samples from the objective function and through that fitted model, finding the most suitable next point to be sampled.
 
 ## Source
@@ -356,23 +354,6 @@ print("The objective function is maximized at: ", new_x)
 Okay, that’s it! :)
 
 If you notice any mistakes or errors in this post, please feel free to contact me at [ad dot vafaeian at gmail dot com]. I will correct any issues immediately.
-
-## Citation
-Cited as:
-> Vafaeian, Ahmad. (Jul 2023). Bayeisan Optimization. Ahmad’Log. https://advafaeian.github.io/posts/2023-07-07-bayesian-optimization/.
-
-or
-
-```bibtex
-@article{vafaeian2023bayesopt,
-  title   = "Bayesian Optimization",
-  author  = "Vafaeian, Ahmad",
-  journal = "advafaeian.github.io",
-  year    = "2023",
-  month   = "Jul",
-  url     = "https://advafaeian.github.io/posts/2023-07-07-bayesian-optimization/"
-}
-```
 
 ## References
 - https://en.wikipedia.org/wiki/Bayes%27_theorem
