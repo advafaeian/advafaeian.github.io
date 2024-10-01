@@ -1,0 +1,14 @@
+---
+title: 'Proximal Policy Optimization' 
+date: 2024-09-30T17:38:50+03:30
+draft: false
+tags: ["policy gradient", "actor-critic", "reinfrocement learning", "proximal policy optimization"]
+description: "How does proximal policy optimization work?"
+canonicalURL: "https://advafaeian.github.io/2024-09-30-PPO/"
+cover:
+    image: "cover.jpg" # image path/url
+    alt: "Retro gaming" # alt text
+    caption: "Photo by Lander Denys on Unsplash"
+    relative: true
+github: "https://github.com/advafaeian/proximal-policy-optimization"    
+---
