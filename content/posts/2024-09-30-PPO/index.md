@@ -1051,7 +1051,7 @@ for epoch in range(num_epochs):
                 tf.summary.scalar("rewards", rewards, step=global_steps)
                 tf.summary.scalar("length", length, step=global_steps)
         print(f"rewards:{int(rewards)}, length:{length}, SPS:{int(global_steps/(time.time() - start))}, step:{global_steps}")
-model.save_weights('./model.weights.h5')
+model.save_weights('./model2M.weights.h5')
 ```
 
 Output:
@@ -1074,7 +1074,7 @@ rewards:276, length:173, SPS:1577, step:1963008
 ```
 Summary:
 
-!['rewards and lenght summary'](./images/run.jpg)
+!['rewards and lenght summary'](./media/run.jpg)
 
 ## Rendering an Episode and Saving as a MP4
 
@@ -1085,7 +1085,7 @@ This function renders an episode from a given environment using a provided model
 
 
 model.load_weights('model2M.weights.h5')
-render_env = gym.wrappers.RecordVideo(gym.make("LunarLander-v2", render_mode='rgb_array'), "videos", name_prefix="lunar_lander", disable_logger=True)
+render_env = gym.wrappers.RecordVideo(gym.make("LunarLander-v2", render_mode='rgb_array'), "media", name_prefix="lunar_lander", disable_logger=True)
 state, info = render_env.reset()
 state = tf.constant(state, dtype=tf.float32)
 
@@ -1100,7 +1100,7 @@ for i in range(1, 1001):
     break
 ```
 
-<video src="./videos/lunar_lander-episode-0.mp4" width="500" controls autoplay loop></video>
+<video src="./media/lunar_lander-episode-0.mp4" width="500" controls autoplay loop></video>
 
 ## References
 
