@@ -191,7 +191,8 @@ This prints:
 └─────────────────────┴───────────────────┴────────────┴───────────────────┘
  Total params: 1,063,941 (4.06 MB)
  Trainable params: 1,063,941 (4.06 MB)
- Non-trainable params: 0 (0.00 B)```
+ Non-trainable params: 0 (0.00 B)
+ ```
 
 ## Handling Environment Steps and TensorFlow Integration
 
