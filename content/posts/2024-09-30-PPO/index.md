@@ -15,7 +15,7 @@ github: "https://github.com/advafaeian/proximal-policy-optimization"
 
 ## Source
 - #### [Github Repository](https://github.com/advafaeian/proximal-policy-optimization)
-- #### [Notebook](https://github.com/advafaeian/proximal-policy-optimization/PPO.ipynb)
+- #### [Notebook](https://github.com/advafaeian/proximal-policy-optimization/blob/main/PPO.ipynb)
 
 Here, we attempt to use PPO to train a neural network to land the [Gymnasium's 'Lunar Lander'](https://gymnasium.farama.org/environments/box2d/lunar_lander/) environment. I explain each step and function gradually as we move forward, starting with the importation of basic modules.
 
@@ -30,10 +30,6 @@ import keras
 import gymnasium as gym
 
 ```
-
-    2024-09-30 21:07:58.900408: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-    To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-
 
 ## Configuring Global Variables and Training Parameters
 
@@ -96,13 +92,6 @@ def get_run_logdir(root_logdir="."):
     return root_logdir + "/" + strftime("run_%Y_%m_%d_%H_%M_%S")
 get_run_logdir()
 ```
-
-
-
-
-    './run_2024_09_30_21_08_08'
-
-
 
 ## Setting Up Lunar Lander Environments with Video Recording
 
@@ -180,51 +169,6 @@ def create_model(units, activation = "relu"):
 model = create_model([1024, 1024], activation="relu")
 model.summary()
 ```
-
-
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "functional"</span>
-</pre>
-
-
-
-
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┓
-┃<span style="font-weight: bold"> Layer (type)        </span>┃<span style="font-weight: bold"> Output Shape      </span>┃<span style="font-weight: bold">    Param # </span>┃<span style="font-weight: bold"> Connected to      </span>┃
-┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━┩
-│ input_layer         │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">8</span>)         │          <span style="color: #00af00; text-decoration-color: #00af00">0</span> │ -                 │
-│ (<span style="color: #0087ff; text-decoration-color: #0087ff">InputLayer</span>)        │                   │            │                   │
-├─────────────────────┼───────────────────┼────────────┼───────────────────┤
-│ dense (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)       │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1024</span>)      │      <span style="color: #00af00; text-decoration-color: #00af00">9,216</span> │ input_layer[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>] │
-├─────────────────────┼───────────────────┼────────────┼───────────────────┤
-│ dense_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)     │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1024</span>)      │  <span style="color: #00af00; text-decoration-color: #00af00">1,049,600</span> │ dense[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]       │
-├─────────────────────┼───────────────────┼────────────┼───────────────────┤
-│ policy_function     │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">4</span>)         │      <span style="color: #00af00; text-decoration-color: #00af00">4,100</span> │ dense_1[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]     │
-│ (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)             │                   │            │                   │
-├─────────────────────┼───────────────────┼────────────┼───────────────────┤
-│ value_function      │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1</span>)         │      <span style="color: #00af00; text-decoration-color: #00af00">1,025</span> │ dense_1[<span style="color: #00af00; text-decoration-color: #00af00">0</span>][<span style="color: #00af00; text-decoration-color: #00af00">0</span>]     │
-│ (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)             │                   │            │                   │
-└─────────────────────┴───────────────────┴────────────┴───────────────────┘
-</pre>
-
-
-
-
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">1,063,941</span> (4.06 MB)
-</pre>
-
-
-
-
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">1,063,941</span> (4.06 MB)
-</pre>
-
-
-
-
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
-</pre>
-
-
 
 This prints:
 
@@ -1106,7 +1050,7 @@ for epoch in range(num_epochs):
                 tf.summary.scalar("rewards", rewards, step=global_steps)
                 tf.summary.scalar("length", length, step=global_steps)
         print(f"rewards:{int(rewards)}, length:{length}, SPS:{int(global_steps/(time.time() - start))}, step:{global_steps}")
-model.save_weights('./m.weights.h5')
+model.save_weights('./model.weights.h5')
 ```
 
 Output:
