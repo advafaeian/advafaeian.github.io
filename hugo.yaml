@@ -62,7 +62,7 @@ params:
 
   analytics:
     google:
-      SiteVerificationTag: "G-KV6QTKP6Q2"
+      SiteVerificationTag: G-KV6QTKP6Q2
   
   cover:
     hiddenInList: true # hide on list pages and home
