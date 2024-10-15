@@ -5,6 +5,8 @@ theme: PaperMod
 
 enableRobotsTXT: false
 
+googleAnalytics: G-KV6QTKP6Q2
+
 minify:
   minifyOutput: true
 
@@ -60,10 +62,6 @@ params:
       url: "https://github.com/advafaeian"
     - name: googlescholar
       url: "https://scholar.google.com/citations?user=R_lSdOYAAAAJ&hl=en"
-
-  analytics:
-    google:
-      SiteVerificationTag: G-KV6QTKP6Q2
   
   cover:
     hiddenInList: true # hide on list pages and home
