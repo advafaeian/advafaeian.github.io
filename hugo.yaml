@@ -3,8 +3,9 @@ languageCode: en-us
 title: Ahmad's Log
 theme: PaperMod
 
+enableRobotsTXT: false
+
 minify:
-  disableXML: true
   minifyOutput: true
 
 params:
